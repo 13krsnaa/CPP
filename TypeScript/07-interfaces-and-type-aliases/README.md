@@ -1,17 +1,46 @@
-# 07. Interfaces And Type Aliases
+# 🏗️ 07. Interfaces And Type Aliases
 
-## Introduction
+[← Previous: Unions, Literal Types, Enums](../06-unions-literals-enums/README.md) | [Back to Hub](../README.md) | [Next: Generics →](../08-generics/README.md)
 
-Jaise jaise project bada hota hai, object shapes ko bar bar likhna boring aur error-prone ho jata hai.
-Yahan `interface` aur `type` help karte hain.
-
-Ye dono reusable type definitions banane ke liye use hote hain.
+> **Read Time**: 20-22 minutes  
+> **Goal**: Reusable types banana aur object structures ko clean tarike se organize karna
 
 ---
 
-## Interface
+## 🎯 What You'll Learn
 
-Interface mostly object structure define karne ke liye use hota hai.
+1. `interface` kya hota hai
+2. `type` alias kya hota hai
+3. Dono me difference kya hai
+4. Reusable structure banana kyu important hai
+
+---
+
+## 🧠 Problem Statement
+
+Agar tum bar bar same object shape likhoge, to:
+
+- code lengthy ho jayega
+- typo ka chance badhega
+- maintenance difficult hogi
+
+Yahin `interface` aur `type alias` useful hote hain.
+
+---
+
+## 📌 Quick Comparison Table
+
+| Feature | Interface | Type Alias |
+|---------|-----------|------------|
+| Object shapes | ✅ Best fit | ✅ Possible |
+| Union types | ❌ | ✅ |
+| Tuple types | ❌ | ✅ |
+| Extend karna | ✅ Very common | ✅ Possible |
+| Beginner use case | Models / object contracts | Flexible type definitions |
+
+---
+
+## 🧪 Interface Example
 
 ```ts
 interface User {
@@ -23,10 +52,7 @@ interface User {
 
 ---
 
-## Type Alias
-
-Type alias sirf object tak limited nahi hai.
-Ye unions, tuples, primitives aur complex combinations ke liye bhi use ho sakta hai.
+## 🧪 Type Alias Example
 
 ```ts
 type Status = "loading" | "success" | "error";
@@ -34,7 +60,7 @@ type Status = "loading" | "success" | "error";
 
 ---
 
-## Example
+## 🧪 Real Example
 
 ```ts
 interface Product {
@@ -59,31 +85,18 @@ console.log(apiStatus);
 
 ---
 
-## Code Explanation
+## 🔍 Code Breakdown
 
-- `Product` ek reusable object contract hai
-- `ApiStatus` fixed string values ka reusable type hai
-- Code clean ho jata hai because repeated structure ek jagah define hota hai
-
----
-
-## Interface Vs Type Alias
-
-Use interface when:
-
-- object shape define karna ho
-- future me extend karna ho
-- clean model-like structure chahiye
-
-Use type alias when:
-
-- union banana ho
-- tuple banana ho
-- combination type define karna ho
+| Part | Meaning |
+|------|---------|
+| `interface Product` | Reusable object contract |
+| `type ApiStatus = ...` | Fixed string values ka reusable type |
+| `const product: Product` | Product object ko defined structure follow karna hoga |
+| `let apiStatus: ApiStatus` | Variable sirf allowed status values le sakta hai |
 
 ---
 
-## Extending Interface
+## 🧪 Extending Interface
 
 ```ts
 interface Person {
@@ -95,26 +108,43 @@ interface Employee extends Person {
 }
 ```
 
----
-
-## Common Mistakes
-
-- interface aur type ka exact difference samjhe bina random use karna
-- reusable structures ko inline object typing me hi likhte rehna
-- object property miss kar dena
+Yahan `Employee` ne `Person` ke features inherit kiye.
 
 ---
 
-## Practice Tasks
+## 🧠 Kab Kya Use Karein?
+
+| Situation | Best Choice |
+|-----------|-------------|
+| Object model banana hai | `interface` |
+| Union ya tuple banana hai | `type` |
+| API response ke exact states define karne hain | `type` |
+| Large object contracts aur extension chahiye | `interface` |
+
+---
+
+## ⚠️ Common Mistakes
+
+1. Reusable object ko inline type ke saath hi likhte rehna.
+2. Interface aur type ko magic samajhna without understanding.
+3. Object properties miss kar dena aur expect karna ki code phir bhi safe rahega.
+
+---
+
+## 📝 Practice Tasks
 
 1. Ek `Student` interface banao jisme `name`, `rollNumber`, aur `isPresent` ho.
 2. Ek `ResultStatus` type banao jo `"pass"` ya `"fail"` allow kare.
-3. Ek `Teacher` interface banao jo `Person` jaisi base interface ko extend kare.
+3. Ek `Teacher` interface banao jo kisi base `Person` interface ko extend kare.
 
 ---
 
-## Quick Summary
+## ✅ Quick Recap
 
-- interface reusable object contracts ke liye best hota hai
-- type alias wider use-cases ke liye useful hota hai
-- dono milkar code ko readable aur maintainable banate hain
+- Interface object contracts ke liye bahut useful hai
+- Type alias broader use-cases handle karta hai
+- Reusable types code ko cleaner aur maintainable banate hain
+
+---
+
+[← Previous: Unions, Literal Types, Enums](../06-unions-literals-enums/README.md) | [Next: Generics →](../08-generics/README.md)

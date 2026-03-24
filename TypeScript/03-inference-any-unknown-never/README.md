@@ -1,16 +1,35 @@
-# 03. Inference, Any, Unknown, Never
+# 🧭 03. Inference, Any, Unknown, Never
 
-## Introduction
+[← Previous: Basic Types](../02-basic-types/README.md) | [Back to Hub](../README.md) | [Next: Functions →](../04-functions/README.md)
 
-TypeScript hamesha tumse type likhwana zaruri nahi samajhta.
-Kai baar wo khud guess kar leta hai ki variable ka type kya hai.
-Is process ko `type inference` kehte hain.
-
-Isi topic me hum `any`, `unknown`, aur `never` bhi samjhenge.
+> **Read Time**: 18-20 minutes  
+> **Goal**: Samajhna ki TypeScript type kaise guess karta hai aur `any`, `unknown`, `never` kab use hote hain
 
 ---
 
-## Type Inference
+## 🎯 What You'll Learn
+
+Is topic me tum samjhoge:
+
+1. Type inference kya hota hai
+2. `any` dangerous kyu hota hai
+3. `unknown` safer option kyu hai
+4. `never` ka actual meaning kya hota hai
+
+---
+
+## 📌 Quick Comparison Table
+
+| Concept | Simple Meaning | Safe? | Kab Use Karna Chahiye |
+|---------|----------------|-------|-----------------------|
+| Inference | TypeScript khud type guess karta hai | ✅ | Jab value clear ho |
+| `any` | Type checking almost band | ❌ | Sirf temporary ya exceptional case |
+| `unknown` | Value unknown hai, pehle check karo | ✅ | API/input jahan type sure nahi |
+| `never` | Function kabhi normal value return nahi karega | ✅ | Error throw ya infinite loop cases |
+
+---
+
+## 🧠 Type Inference
 
 ```ts
 let language = "TypeScript";
@@ -28,10 +47,7 @@ Isliye har jagah explicit type likhna zaruri nahi hota.
 
 ---
 
-## What Is `any`
-
-`any` ka matlab:
-TypeScript checking almost band kar do.
+## ⚠️ `any` Kya Karta Hai?
 
 ```ts
 let data: any = "hello";
@@ -39,15 +55,17 @@ data = 100;
 data = true;
 ```
 
-Ye flexible hai, but dangerous bhi.
-Jab tum `any` use karte ho, TypeScript tumhe protect kam karta hai.
+`any` bolta hai:
+
+```text
+TypeScript, is variable ko lekar mujhe check mat karo.
+```
+
+Ye easy lagta hai, lekin learning aur safety dono weak kar deta hai.
 
 ---
 
-## What Is `unknown`
-
-`unknown` bhi flexible hai, but safer than `any`.
-Tum value ko directly use nahi kar sakte jab tak uska type check na kar lo.
+## ✅ `unknown` Kyu Better Hai?
 
 ```ts
 let response: unknown = "Hello";
@@ -57,13 +75,16 @@ if (typeof response === "string") {
 }
 ```
 
+Yahan TypeScript kehta hai:
+
+```text
+Theek hai, value unknown hai.
+Lekin use karne se pehle prove karo ki ye kis type ki hai.
+```
+
 ---
 
-## What Is `never`
-
-`never` usually un functions me aata hai jo kabhi normal value return hi nahi karte.
-
-Example:
+## 🚫 `never` Kya Hota Hai?
 
 ```ts
 function throwError(message: string): never {
@@ -71,11 +92,15 @@ function throwError(message: string): never {
 }
 ```
 
-Ye function execution ko stop kar deta hai, isliye return type `never` hai.
+`never` ka matlab:
+
+- function normal way me khatam nahi hota
+- ya to error throw karta hai
+- ya infinite loop me chala jata hai
 
 ---
 
-## Example
+## 🧪 Example
 
 ```ts
 let title = "Learning TS";
@@ -94,46 +119,49 @@ if (typeof apiData === "string") {
 
 ---
 
-## Code Explanation
+## 🔍 Code Breakdown
 
-- `title` me type infer hua as `string`
-- `apiData` ka actual type unknown hai, isliye direct methods use nahi kar sakte
-- `typeof apiData === "string"` ke baad TypeScript ko clarity milti hai
-- `fail` function kabhi value return nahi karta, sirf error throw karta hai
-
----
-
-## JavaScript Vs TypeScript
-
-JavaScript me tum unknown value par seedha method chala dete ho aur error runtime me milta hai.
-TypeScript kehta hai: pehle prove karo ki value kis type ki hai.
+| Line / Part | Meaning |
+|-------------|---------|
+| `let title = "Learning TS"` | Type inference se `string` detect hua |
+| `apiData: unknown` | Value available hai, but type trusted nahi hai |
+| `typeof apiData === "string"` | Safe check ke baad string methods allowed hoti hain |
+| `fail(...): never` | Function value return nahi karega, sirf error throw karega |
 
 ---
 
-## Common Mistakes
+## 🆚 `void` Vs `never`
 
-- Error se bachne ke liye turant `any` use kar dena
-- `unknown` ko `any` samajh lena
-- `never` ko `void` ke saath confuse karna
-
-Difference:
-
-- `void` means function kuch useful return nahi karta
-- `never` means function normal flow me return hi nahi karta
+| Type | Meaning |
+|------|---------|
+| `void` | Function useful return value nahi deta |
+| `never` | Function normal flow me finish hi nahi hota |
 
 ---
 
-## Practice Tasks
+## ⚠️ Common Mistakes
+
+1. Error aate hi `any` use kar dena.
+2. `unknown` ko `any` jaisa treat karna.
+3. `never` aur `void` ko same samajhna.
+
+---
+
+## 📝 Practice Tasks
 
 1. Ek variable banao jisme type inference se `number` set ho.
-2. Ek `unknown` variable banao aur usko safe type check ke baad use karo.
+2. Ek `unknown` variable banao aur type check ke baad us par method use karo.
 3. Ek function likho jo error throw kare aur uska return type `never` ho.
 
 ---
 
-## Quick Summary
+## ✅ Quick Recap
 
-- Type inference TypeScript ka smart feature hai
-- `any` se checking weak ho jati hai
-- `unknown` safer option hai
+- Type inference TypeScript ka smart default behavior hai
+- `any` fast shortcut hai, lekin risky hai
+- `unknown` safer unknown-data handling deta hai
 - `never` un cases ke liye hota hai jahan function normal return nahi karta
+
+---
+
+[← Previous: Basic Types](../02-basic-types/README.md) | [Next: Functions →](../04-functions/README.md)

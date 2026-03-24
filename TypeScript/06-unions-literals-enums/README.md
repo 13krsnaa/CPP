@@ -1,19 +1,32 @@
-# 06. Unions, Literal Types, Enums
+# 🔀 06. Unions, Literal Types, Enums
 
-## Introduction
+[← Previous: Objects, Arrays, Tuples](../05-objects-arrays-tuples/README.md) | [Back to Hub](../README.md) | [Next: Interfaces And Type Aliases →](../07-interfaces-and-type-aliases/README.md)
 
-Kabhi kabhi ek variable sirf ek type ka nahi hota.
-Kabhi wo `string` ya `number` dono ho sakta hai.
-Kabhi allowed values bahut specific hoti hain.
-
-In sab cases me unions, literal types, aur enums help karte hain.
+> **Read Time**: 20 minutes  
+> **Goal**: Flexible but controlled values ko TypeScript me safe tarike se represent karna
 
 ---
 
-## Union Types
+## 🎯 What You'll Learn
 
-Union type ka matlab:
-Ek value multiple possible types me se kisi ek type ki ho sakti hai.
+1. Union types kya hote hain
+2. Literal types kis problem ko solve karte hain
+3. Enums kab useful hote hain
+4. Fixed allowed values define karne ke different ways
+
+---
+
+## 📌 Quick Comparison Table
+
+| Concept | Meaning | Example |
+|---------|---------|---------|
+| Union | Value multiple possible types me se ek ho sakti hai | `string \| number` |
+| Literal Type | Value sirf specific exact values me se ek ho sakti hai | `"pending" \| "paid"` |
+| Enum | Named constant group | `Role.Admin` |
+
+---
+
+## 🧪 Union Example
 
 ```ts
 let orderId: string | number;
@@ -22,23 +35,22 @@ orderId = "ORD-101";
 orderId = 101;
 ```
 
+Yahan `orderId` kabhi string ho sakta hai, kabhi number.
+
 ---
 
-## Literal Types
-
-Literal type me allowed values fixed hoti hain.
+## 🧪 Literal Type Example
 
 ```ts
 let status: "pending" | "success" | "failed";
 ```
 
-Is variable me sirf in teen values me se koi ek hi aa sakti hai.
+Yahan allowed values fixed hain.
+Random string allowed nahi hogi.
 
 ---
 
-## Enums
-
-Enum named constants ka group hota hai.
+## 🧪 Enum Example
 
 ```ts
 enum Role {
@@ -50,7 +62,7 @@ enum Role {
 
 ---
 
-## Example
+## 🧪 Combined Real Example
 
 ```ts
 type PaymentStatus = "pending" | "paid" | "cancelled";
@@ -70,36 +82,37 @@ console.log(currentRole);
 
 ---
 
-## Code Explanation
+## 🔍 Code Breakdown
 
-- `PaymentStatus` ek literal union type hai
-- `paymentStatus` me random string nahi aa sakti
-- `UserRole` enum reusable constants provide karta hai
-- `currentRole` ko enum members me se hi value milegi
-
----
-
-## JavaScript Vs TypeScript
-
-JavaScript me tum `"paid"` ki jagah `"payd"` bhi likh do to typo runtime tak chhup sakta hai.
-TypeScript literal types aur enums se aise typos kam hote hain.
+| Part | Meaning |
+|------|---------|
+| `string | number` | Value do types me se kisi ek type ki ho sakti hai |
+| `"pending" | "paid"` | Sirf exact values allowed hain |
+| `enum UserRole` | Reusable named constants ka group |
+| `UserRole.Admin` | Enum member access karna |
 
 ---
 
-## Common Mistakes
+## 🧠 Literal Type Vs Enum
 
-- unions ke saath narrowing na karna
-- enum aur literal type ko bina samjhe interchangeably use karna
-- allowed values ko too broad rakh dena
-
-Tip:
-
-- simple fixed strings ke liye literal types enough hote hain
-- named reusable constant set ke liye enums use kar sakte ho
+| If You Need... | Better Choice |
+|----------------|---------------|
+| Simple fixed string values | Literal types |
+| Named reusable constant group | Enum |
+| Typos se bachna | Dono help karte hain |
+| Cleaner plain string unions | Literal types |
 
 ---
 
-## Practice Tasks
+## ⚠️ Common Mistakes
+
+1. Literal type hone ke baad bhi random string assign karne ki koshish karna.
+2. Union type value ko narrow kiye bina direct use karna.
+3. Enum aur literal types ko bina reason mix kar dena.
+
+---
+
+## 📝 Practice Tasks
 
 1. Ek variable banao jo `string | number` accept kare.
 2. Ek `theme` type banao jo sirf `"light"` ya `"dark"` allow kare.
@@ -107,8 +120,12 @@ Tip:
 
 ---
 
-## Quick Summary
+## ✅ Quick Recap
 
-- unions flexibility dete hain
-- literal types exact allowed values define karte hain
-- enums named constant groups provide karte hain
+- Union flexibility deta hai
+- Literal type exact allowed values define karta hai
+- Enum reusable named constant structure deta hai
+
+---
+
+[← Previous: Objects, Arrays, Tuples](../05-objects-arrays-tuples/README.md) | [Next: Interfaces And Type Aliases →](../07-interfaces-and-type-aliases/README.md)

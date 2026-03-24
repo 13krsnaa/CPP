@@ -1,15 +1,26 @@
-# 09. Type Narrowing
+# 🔍 09. Type Narrowing
 
-## Introduction
+[← Previous: Generics](../08-generics/README.md) | [Back to Hub](../README.md) | [Next: Classes And Access Modifiers →](../10-classes-and-access-modifiers/README.md)
 
-Jab koi value multiple types ki ho sakti hai, TypeScript tumhe bolta hai:
-pehle check karo, phir safely use karo.
-
-Is process ko `type narrowing` kehte hain.
+> **Read Time**: 20 minutes  
+> **Goal**: Union types ke saath safe property access aur logic branching samajhna
 
 ---
 
-## Why Narrowing Is Needed
+## 🎯 What You'll Learn
+
+1. Narrowing kya hota hai
+2. `typeof` se narrowing kaise hoti hai
+3. `in` operator ka use
+4. Discriminated unions ka idea
+
+---
+
+## 🧠 Narrowing Kyu Zaruri Hai?
+
+Agar ek value multiple types ki ho sakti hai, to TypeScript ko certainty chahiye hoti hai.
+
+Example:
 
 ```ts
 function printId(id: string | number) {
@@ -17,12 +28,22 @@ function printId(id: string | number) {
 }
 ```
 
-Yahan `id` par string-only methods directly use nahi kar sakte.
-Pehle check karna hoga ki ye actually string hai ya number.
+Yahan TypeScript seedha `id.toUpperCase()` allow nahi karega, kyunki `id` number bhi ho sakta hai.
 
 ---
 
-## Narrowing With `typeof`
+## 📌 Common Narrowing Tools
+
+| Tool | Kab Use Karna Hai |
+|------|-------------------|
+| `typeof` | Primitive types check karne ke liye |
+| `in` | Object property based check ke liye |
+| Equality check | Specific literal value check ke liye |
+| Discriminated union | Structured union objects ke liye |
+
+---
+
+## 🧪 Narrowing With `typeof`
 
 ```ts
 function printId(id: string | number) {
@@ -36,7 +57,7 @@ function printId(id: string | number) {
 
 ---
 
-## Narrowing With `in`
+## 🧪 Narrowing With `in`
 
 ```ts
 type Admin = { name: string; permissions: string[] };
@@ -53,7 +74,7 @@ function printUserInfo(user: Admin | Customer) {
 
 ---
 
-## Example With Discriminated Union
+## 🧪 Discriminated Union Example
 
 ```ts
 type Payment =
@@ -71,32 +92,39 @@ function processPayment(payment: Payment) {
 
 ---
 
-## Code Explanation
+## 🔍 Code Breakdown
 
-- `payment.method` ek shared property hai
-- uski value dekhkar TypeScript samajh leta hai ki object kaunsa hai
-- isliye correct properties safely access hoti hain
-
----
-
-## Common Mistakes
-
-- union type value ko direct use kar lena
-- type check kiye bina specific property access karna
-- narrowing ke baad bhi unnecessary type assertion use karna
+| Part | Meaning |
+|------|---------|
+| `string | number` | Value multiple types me se ek ho sakti hai |
+| `typeof id === "string"` | TypeScript ko string case ka proof milta hai |
+| `"permissions" in user` | Object type narrow hota hai |
+| `payment.method === "card"` | Shared field se exact object shape identify hoti hai |
 
 ---
 
-## Practice Tasks
+## ⚠️ Common Mistakes
 
-1. Ek function banao jo `string | number` input le aur type ke hisab se output kare.
+1. Union type value ko direct specific method ke saath use karna.
+2. Type narrowing ke baad bhi unnecessary assertions lagana.
+3. Object unions me property existence check na karna.
+
+---
+
+## 📝 Practice Tasks
+
+1. Ek function banao jo `string | number` input le aur type ke hisab se different output kare.
 2. Do object types banao aur `in` operator se unko narrow karo.
-3. Ek discriminated union banao for `success` and `error` response shapes.
+3. Ek discriminated union banao for `success` and `error` API responses.
 
 ---
 
-## Quick Summary
+## ✅ Quick Recap
 
-- type narrowing union types ke saath safe coding ka core concept hai
-- `typeof`, `in`, aur discriminated unions common tools hain
-- runtime checks TypeScript ko better understanding dete hain
+- Type narrowing union values ke saath safe coding ka core part hai
+- `typeof`, `in`, aur discriminated unions bahut common tools hain
+- Runtime checks TypeScript ko better type understanding dete hain
+
+---
+
+[← Previous: Generics](../08-generics/README.md) | [Next: Classes And Access Modifiers →](../10-classes-and-access-modifiers/README.md)

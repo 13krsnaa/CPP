@@ -1,25 +1,47 @@
-# 11. Utility Types
+# 🧰 11. Utility Types
 
-## Introduction
+[← Previous: Classes And Access Modifiers](../10-classes-and-access-modifiers/README.md) | [Back to Hub](../README.md) | [Next: tsconfig And Workflow →](../12-tsconfig-and-workflow/README.md)
 
-TypeScript kuch built-in helper types deta hai jo existing types ko transform karne me help karte hain.
-Inhe utility types kehte hain.
-
-Ye real projects me bahut useful hote hain, especially forms, APIs, updates, and derived models ke liye.
+> **Read Time**: 18-20 minutes  
+> **Goal**: Existing types ko quickly reuse aur transform karna
 
 ---
 
-## Common Utility Types
+## 🎯 What You'll Learn
 
-- `Partial<T>`
-- `Required<T>`
-- `Pick<T, Keys>`
-- `Omit<T, Keys>`
-- `Record<Keys, Type>`
+1. Utility types kya hote hain
+2. `Partial`, `Required`, `Pick`, `Omit`, `Record`
+3. Real-world examples me inka use
+4. Type duplication kam kaise hoti hai
 
 ---
 
-## Example Base Type
+## 🧠 Utility Types Kyu Important Hain?
+
+Real code me baar baar ye need aati hai:
+
+- full object ka update version banana
+- sirf kuch selected fields nikalna
+- kuch fields hata dena
+- key-value map structure banana
+
+Har baar naya type manually likhne ke bajay utility types ka use hota hai.
+
+---
+
+## 📌 Common Utility Types Table
+
+| Utility Type | Kya Karta Hai |
+|--------------|---------------|
+| `Partial<T>` | Sab properties optional bana deta hai |
+| `Required<T>` | Sab properties required bana deta hai |
+| `Pick<T, Keys>` | Sirf selected properties leta hai |
+| `Omit<T, Keys>` | Selected properties hata deta hai |
+| `Record<Keys, Type>` | Key-value object structure banata hai |
+
+---
+
+## 🧪 Base Type Example
 
 ```ts
 interface User {
@@ -32,7 +54,7 @@ interface User {
 
 ---
 
-## Example Usage
+## 🧪 Real Example
 
 ```ts
 interface User {
@@ -63,33 +85,36 @@ const permissions: AdminConfig = {
 
 ---
 
-## Code Explanation
+## 🔍 Code Breakdown
 
-- `Partial<User>` sab properties ko optional bana deta hai
-- `Pick<User, "id" | "name">` sirf selected keys rakhta hai
-- `Record<string, boolean>` ek object type banata hai jisme keys string aur values boolean hoti hain
-
----
-
-## When They Help
-
-- update payloads
-- filtered response objects
-- config maps
-- form drafts
-- reusable derived types
+| Part | Meaning |
+|------|---------|
+| `Partial<User>` | Update payload jaisa type ban sakta hai |
+| `Pick<User, "id" | "name">` | Sirf selected public fields rakhe jate hain |
+| `Record<string, boolean>` | String keys aur boolean values ka map |
 
 ---
 
-## Common Mistakes
+## 📌 Real-World Use Cases
 
-- utility type use karna jab simple direct type enough ho
-- `Partial` ko full validation replacement samajh lena
-- `Pick` aur `Omit` ka wrong use karna
+| Situation | Useful Utility Type |
+|-----------|---------------------|
+| Form update payload | `Partial<T>` |
+| Public profile data | `Pick<T, Keys>` |
+| Internal field remove karna | `Omit<T, Keys>` |
+| Permission map | `Record<K, V>` |
 
 ---
 
-## Practice Tasks
+## ⚠️ Common Mistakes
+
+1. Utility type use karna jab normal direct type enough ho.
+2. `Partial` ko validation ka replacement samajhna.
+3. `Pick` aur `Omit` me wrong field names use karna.
+
+---
+
+## 📝 Practice Tasks
 
 1. Ek `Product` interface banao aur uska `Partial<Product>` update type create karo.
 2. Ek `Pick` example banao jo sirf `id` aur `title` choose kare.
@@ -97,8 +122,12 @@ const permissions: AdminConfig = {
 
 ---
 
-## Quick Summary
+## ✅ Quick Recap
 
-- utility types existing types ko reuse aur reshape karne me help karte hain
-- ye real-world development me time bachate hain
-- ye code ko DRY aur maintainable banate hain
+- Utility types type duplication kam karte hain
+- Ye existing types ko reuse aur reshape karne me help karte hain
+- Real-world code me ye time bachate hain aur consistency badhate hain
+
+---
+
+[← Previous: Classes And Access Modifiers](../10-classes-and-access-modifiers/README.md) | [Next: tsconfig And Workflow →](../12-tsconfig-and-workflow/README.md)

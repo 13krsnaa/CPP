@@ -1,25 +1,49 @@
-# 12. tsconfig And Workflow
+# ⚙️ 12. tsconfig And Workflow
 
-## Introduction
+[← Previous: Utility Types](../11-utility-types/README.md) | [Back to Hub](../README.md)
+
+> **Read Time**: 20 minutes  
+> **Goal**: TypeScript project ka practical setup aur compiler workflow samajhna
+
+---
+
+## 🎯 What You'll Learn
+
+1. `tsconfig.json` kya karta hai
+2. Important compiler options ka meaning
+3. Source aur output folder ka flow
+4. Basic TypeScript workflow kaise chalti hai
+
+---
+
+## 🧠 `tsconfig.json` Kya Hota Hai?
 
 `tsconfig.json` TypeScript project ka control center hota hai.
+
 Ye decide karta hai:
 
-- compiler ka behavior kya hoga
-- source files kahan hongi
-- output kahan jayega
-- strict rules on honge ya nahi
+- compiler ka behavior
+- source files ka location
+- output files ka location
+- strictness rules
 
 ---
 
-## Why This File Matters
+## 📌 Important Compiler Options
 
-Bahut beginners TypeScript install to kar lete hain, but `tsconfig.json` ko ignore kar dete hain.
-Real projects me ye file bahut important hoti hai.
+| Option | Meaning |
+|--------|---------|
+| `target` | Kaunsa JavaScript version output me chahiye |
+| `module` | Import/export ka format |
+| `rootDir` | Source code kahan pada hai |
+| `outDir` | Compiled files kahan jayengi |
+| `strict` | Strong type-checking rules on karta hai |
+| `noImplicitAny` | Hidden `any` ko discourage karta hai |
+| `esModuleInterop` | Module compatibility improve karta hai |
 
 ---
 
-## Example `tsconfig.json`
+## 🧪 Example `tsconfig.json`
 
 ```json
 {
@@ -38,47 +62,20 @@ Real projects me ye file bahut important hoti hai.
 
 ---
 
-## Important Options
+## 🔍 Option Breakdown
 
-### `target`
-JavaScript ka kaunsa version output me chahiye.
-
-### `module`
-Import/export system ka format.
-
-### `rootDir`
-Source code kaha hai.
-
-### `outDir`
-Compiled JavaScript kaha jayegi.
-
-### `strict`
-Strict type checking on karta hai.
-
-### `noImplicitAny`
-Jahan type clear na ho, wahan silently `any` allow na karo.
+| Setting | Beginner-Friendly Meaning |
+|---------|---------------------------|
+| `"rootDir": "./src"` | Tumhara original TypeScript code `src` me hai |
+| `"outDir": "./dist"` | Compiled JavaScript `dist` me jayegi |
+| `"strict": true` | Better habits aur safer typing |
+| `"noImplicitAny": true` | Compiler chupke se `any` accept nahi karega |
 
 ---
 
-## Basic Workflow
+## 📂 Project Flow
 
-```bash
-npm install -D typescript
-npx tsc --init
-npx tsc
-```
-
-Agar watch mode chahiye:
-
-```bash
-npx tsc --watch
-```
-
----
-
-## Example Project Flow
-
-```txt
+```text
 project/
 |-- src/
 |   `-- index.ts
@@ -88,36 +85,66 @@ project/
 `-- tsconfig.json
 ```
 
----
+Flow:
 
-## JavaScript Developer Note
-
-JavaScript project me configuration kam visible hoti hai.
-TypeScript project me configuration quality directly affect karti hai.
-
-Strict mode on rakhna generally best habit hai.
+```text
+Write TypeScript in src/ -> Run compiler -> Get JavaScript in dist/
+```
 
 ---
 
-## Common Mistakes
+## ⚡ Basic Workflow Commands
 
-- `strict` ko off rakhna without reason
-- compiled files aur source files ko mix kar dena
-- `rootDir` aur `outDir` clearly set na karna
-- `tsconfig.json` ko copy-paste karna without understanding
+### Install TypeScript
+
+```bash
+npm install -D typescript
+```
+
+### Create config
+
+```bash
+npx tsc --init
+```
+
+### Compile project
+
+```bash
+npx tsc
+```
+
+### Watch mode
+
+```bash
+npx tsc --watch
+```
 
 ---
 
-## Practice Tasks
+## 🆚 Beginner Mistake Vs Better Habit
 
-1. Ek basic `tsconfig.json` banao jisme `rootDir` `src` aur `outDir` `dist` ho.
-2. `strict: true` aur `noImplicitAny: true` ka effect observe karo.
-3. Ek chhota `src/index.ts` file socho aur likho ki compile hone ke baad output kahan aayega.
+| Weak Habit | Better Habit |
+|------------|--------------|
+| `strict` off rakhna | `strict` on rakho |
+| Source aur output files mix karna | `src` aur `dist` separate rakho |
+| Config copy-paste kar dena | Har option ka meaning samjho |
 
 ---
 
-## Quick Summary
+## 📝 Practice Tasks
 
-- `tsconfig.json` project-level TypeScript behavior control karta hai
-- strict settings beginner ko better habits sikhati hain
-- proper workflow samajhna syntax samajhne jitna hi important hai
+1. Ek basic `tsconfig.json` socho ya banao jisme `rootDir` `src` aur `outDir` `dist` ho.
+2. `strict: true` aur `noImplicitAny: true` ka meaning apne words me likho.
+3. Ek chhota project structure draw karo aur batao compiled output kahan jayega.
+
+---
+
+## ✅ Quick Recap
+
+- `tsconfig.json` TypeScript compiler ka main control file hai
+- `strict` aur `noImplicitAny` beginner ke liye bahut useful rules hain
+- Clean project workflow samajhna long-term developer habit ka part hai
+
+---
+
+[← Previous: Utility Types](../11-utility-types/README.md) | [Back to Hub](../README.md)
