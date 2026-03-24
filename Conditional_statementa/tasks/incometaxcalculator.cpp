@@ -12,16 +12,19 @@ int main()
     {
         tax = a * 0.30;
         cout << "Your tax slab is : 30% " << endl;
+        cout << "your tax value is : " << tax << endl;
     }
     else if (a > 500000 && a < 1000000)
     {
         tax = a * 0.20;
         cout << "Your tax slab is : 20% " << endl;
+        cout << "your tax value is : " << tax << endl;
     }
     else if (a > 0 && a <= 500000)
     {
         tax = 0;
         cout << "Your tax slab is : 0% " << endl;
+        cout << "your tax value is : " << tax << endl;
     }
     else
     {

@@ -7,6 +7,6 @@ int main()
     cout << "Enter your age: ";
     cin >> age;
     bool isAdult = (age >= 18) ? true : false;
-    cout << (char)isAdult << endl;
+    cout << isAdult << endl;
     return 0;
 }
